@@ -1,0 +1,356 @@
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5% 5% 0% 5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.175em;
+  font-style: bold;
+}
+
+h3 {
+  font-size: 1em;
+  font-style: normal;
+  display: inline-block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* CHECKBOXES */
+.custom-checkbox {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  min-width: 25px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.85em;
+  border: 2px solid black;
+  background: white;
+  margin-right: 8px;
+
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  width: 100%;
+
+}
+
+.checked {
+  background: #2196F3;
+  color: white;
+}
+
+.fa-check {
+  margin-left: -2px;
+}
+
+#toggles {
+  flex-direction: column;
+}
+
+.drop-down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 25px;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.85em;
+  border: 2px solid black;
+  background: black;
+  color: white;
+  width: 100%;
+  border-width: 2px;
+}
+
+#drop-albums,
+#drop-others {
+  border: black;
+}
+
+.drop {
+  float: right;
+  padding-left: 4px;
+}
+
+#ul-top {
+  flex-direction: column;
+}
+
+[id^=ul-albums],
+[id^=ul-other] {
+  margin-left: 33px;
+  flex-direction: column;
+}
+
+#myBtn {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 2%;
+  /* Place the button at the bottom of the page */
+  right: 2%;
+  /* Place the button 30px from the right */
+  z-index: 99;
+  /* Make sure it does not overlap */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  background-color: #2196F3;
+  /* Set a background color */
+  color: white;
+  /* Text color */
+  border-radius: 48px;
+  /* Rounded corners */
+  font-size: 1.5em;
+  /* Increase font size */
+  text-align: center;
+  height: 48px;
+  width: 48px;
+}
+
+#myBtn:hover {
+  background-color: #0570c8;
+}
+
+#search {
+  font-size: 1em;
+}
+
+::placeholder {
+  color: #ebebeb;
+}
+
+#inputs {
+  margin: 0 auto 28px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  display: flex;
+}
+
+input[type=text] {
+  flex: flex-grow;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  display: inline-block;
+  border: 2px solid #ebebeb;
+  border-radius: 4px;
+
+}
+
+input[type=text]:focus {
+  border: 2px solid black;
+  outline: black;
+
+}
+
+#settings,
+#submit,
+#settings-close {
+  display: inline-block;
+  width: 20%;
+  max-width: 46px;
+  min-width: 30px;
+  height: 46px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1em;
+  color: white;
+  margin-left: 4px;
+}
+
+#settings {
+  background: black;
+  border: 2px solid black;
+  float: right;
+
+}
+
+#submit {
+  background: #2196F3;
+  border: 2px solid #2196F3;
+
+}
+
+#settings-close {
+  background: #ebebeb;
+  border: 2px solid #ebebeb;
+  float: right;
+  color: black
+}
+
+#settings-pop {
+  background: #ebebeb;
+  z-index: 99;
+  border-radius: 4px;
+  display: none;
+  margin: 0 auto 28px;
+  text-align: left;
+  max-width: 480px;
+  width: 90%;
+}
+
+#settings-content {
+  padding: 20px;
+}
+
+.fa-times {
+  width: 20px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0%;
+}
+
+#num-results {
+  text-align: center;
+}
+
+.in-card {
+  margin-block-start: 0
+}
+
+#results {
+  flex-direction: column;
+}
+
+.album {
+  font-family: "Poppins", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 10px 0 5px 0;
+}
+
+.song-section {
+  font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 0.875em;
+}
+
+.result {
+  margin: 0px auto 20px auto;
+  max-width: 600px;
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+}
+
+.result-container {
+  border-radius: 0.5em;
+}
+
+.context {
+  margin: 0;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+.next,
+.prev {
+  font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 0.75em;
+  text-align: center;
+  padding: 0 1em;
+}
+
+.prev {
+  margin-block-start: 1em;
+  margin-block-end: 0.5em;
+}
+
+.next {
+  margin-block-start: 0.5em;
+  margin-block-end: 1.5em;
+}
+
+.lyrics {
+  margin: 0 1em;
+  text-align: center;
+  border-radius: 0.5em;
+  padding: 0 1em;
+  font-size: 1.25em;
+}
+
+.results-top {
+  padding: 0.5em 1em;
+  flex-direction: column;
+  text-align: center;
+}
+
+.results-sep {
+  width: 84%;
+  border-width: 0;
+  height: 1px;
+}
+
+#filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter {
+  background: whitesmoke;
+  outline: 2px solid black;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 1.25em;
+  font-weight: bold;
+
+
+}
+
+/* CLOSE - Cross for dismissing filters */
+.close {
+  width: 1em;
+  height: 1em;
+  opacity: 0.8;
+  padding-left: 1em;
+
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  content: ' ';
+  height: 1em;
+  width: 2px;
+  background-color: black;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}

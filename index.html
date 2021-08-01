@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Swift Lyrics Searcher</title>
+    <link rel="icon"
+        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/65/speech-balloon_1f4ac.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    
+    <h1>Search & Explore Taylor Swift Lyrics</h1>
+    <div id="inputs">
+        <input type="text" id="search" placeholder="Try a lyric or two..." />
+        <button type="submit" id="submit"><i alt="Search" class="fa fa-search"></i></button>
+        <button type="button" id="settings"><i alt="Options" class="fa fa-cog"></i></button>
+    </div>
+
+    <div id="settings-pop">
+        <button type="button" id="settings-close"><i alt="Options" class="fa fa-times"></i></button>
+
+        <div id="settings-content">
+            <h2>Search options</h2>
+
+            <ul id="toggles">
+                <li class="checkbox-row">
+                    <button class="search-option custom-checkbox" id="case-sensitive" onclick="check(this.id)">
+                    </button>
+                    <h3>Case-sensitive matching</h3>
+                </li>
+                <li class="checkbox-row">
+                    <button class="search-option custom-checkbox" id="all-terms" onclick="check(this.id)">
+                    </button>
+                    <h3>Match all search terms</h3>
+                </li>
+                <li class="checkbox-row">
+                    <button class="search-option custom-checkbox" id="full-words" onclick="check(this.id)">
+                    </button>
+                    <h3>Full word matches</h3>
+                </li>
+            </ul>
+
+            <h2>Filter by album/song</h2>
+
+            <ul id="ul-top">
+                <li class="checkbox-row" id="li-albums">
+                    <button class="search-filter custom-checkbox checked" id="box-albums" onclick="check(this.id, 0)">
+                        <i class='fa fa-check'></i>
+                    </button>
+                    <button class="drop-down" id="drop-albums" onclick="drop(this.id)" style="border: 2px solid black;">
+                        <h3>Albums</h3>
+
+                        <i alt="Toggle case-sensitive matching" class='fa fa-chevron-up drop' id="icon-albums"></i>
+                    </button>
+
+                </li>
+
+                <li class="checkbox-row" id="li-other">
+                    <button class="search-filter custom-checkbox checked" id="box-other" onclick="check(this.id, 1)">
+                        <i class='fa fa-check'></i>
+                    </button>
+                    <button class="drop-down" id="drop-other" onclick="drop(this.id)" style="border: 2px solid black;">
+                        <h3>Other</h3>
+                        <i class='fa fa-chevron-up drop' id='icon-other'></i>
+                    </button>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <ul id="filter-container"></ul>
+    <hr style="background: black; height: 1px;">
+    <p id="num-results">The results will show up here - try searching!</p>
+
+    <ul id="results"></ul>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i alt="Go to top" class="fa fa-arrow-up"></i></button>
+
+    <!-- SCRIPTS -->
+    <script src='scripts/search.js'></script>
+    <script src='scripts/settings.js'></script>
+    <script src='scripts/filters.js'></script>
+    <script src='scripts/top.js'></script>
+    <script src='scripts/results.js'></script>
+    <script src='scripts/app.js'></script>
+
+</body>
+
+</html>
