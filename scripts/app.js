@@ -1,4 +1,4 @@
-fetch('https://raw.githubusercontent.com/MargauxThw/TS-lyrics/49ec32453e6e40ad840900af355566ce0706711a/AllData.json')
+fetch('https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllData.json')
     .then(response => response.json())
     .then(data => runApp(data))
     .catch(err => console.log(err));
