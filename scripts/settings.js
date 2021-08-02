@@ -288,6 +288,9 @@ function check(id, data) {
     } else if (id === "full-words") {
         full = !full
         return
+    } else if (id ==="hide-surr") {
+        hideSurr = !hideSurr
+        return
     }
 
     suffix = id.split("-")

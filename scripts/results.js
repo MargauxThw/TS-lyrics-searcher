@@ -318,21 +318,31 @@ function displayResults(data) {
         }
         container.appendChild(hr)
 
-        prev = document.createElement("p")
-        prev.className = "prev"
-        prev.textContent = objResults[i].prev
-
-        next = document.createElement("p")
-        next.className = "next"
-        next.textContent = objResults[i].next
+        if (!hideSurr) {
+            prev = document.createElement("p")
+            prev.className = "prev"
+            prev.textContent = objResults[i].prev
+            container.appendChild(prev)
+        }
 
         lyric = document.createElement("p")
         lyric.className = "lyrics"
         lyric.innerHTML = processText(objResults[i].this)
-
-        container.appendChild(prev)
         container.appendChild(lyric)
-        container.appendChild(next)
+
+        if (hideSurr) {
+            lyric.style.padding = "8px 0 16px 0";
+        }
+
+        if (!hideSurr) {
+            next = document.createElement("p")
+            next.className = "next"
+            next.textContent = objResults[i].next
+            container.appendChild(next)
+        }
+
+        
+        
 
     }
 
