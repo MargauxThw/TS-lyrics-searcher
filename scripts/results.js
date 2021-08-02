@@ -316,27 +316,23 @@ function displayResults(data) {
             hr.style.background = colours[index][2]
 
         }
-        
         container.appendChild(hr)
 
         prev = document.createElement("p")
         prev.className = "prev"
         prev.textContent = objResults[i].prev
-        
-        lyric = document.createElement("p")
-        lyric.className = "lyrics"
-        lyric.innerHTML = processText(objResults[i].this)
-      
+
         next = document.createElement("p")
         next.className = "next"
         next.textContent = objResults[i].next
-       
+
+        lyric = document.createElement("p")
+        lyric.className = "lyrics"
+        lyric.innerHTML = processText(objResults[i].this)
+
         container.appendChild(prev)
         container.appendChild(lyric)
         container.appendChild(next)
-
-        
-        
 
     }
 
