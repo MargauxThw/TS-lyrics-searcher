@@ -108,7 +108,6 @@ function runApp(data) {
     full = false
     matchingCase = false
     allFilters = false
-    hideSurr = false
 
     data_filters = fillSongFilters(data)
 

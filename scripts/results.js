@@ -316,30 +316,24 @@ function displayResults(data) {
             hr.style.background = colours[index][2]
 
         }
+        
         container.appendChild(hr)
 
-        if (!hideSurr) {
-            prev = document.createElement("p")
-            prev.className = "prev"
-            prev.textContent = objResults[i].prev
-            container.appendChild(prev)
-        }
-
+        prev = document.createElement("p")
+        prev.className = "prev"
+        prev.textContent = objResults[i].prev
+        
         lyric = document.createElement("p")
         lyric.className = "lyrics"
         lyric.innerHTML = processText(objResults[i].this)
+      
+        next = document.createElement("p")
+        next.className = "next"
+        next.textContent = objResults[i].next
+       
+        container.appendChild(prev)
         container.appendChild(lyric)
-
-        if (hideSurr) {
-            lyric.style.padding = "8px 0 16px 0";
-        }
-
-        if (!hideSurr) {
-            next = document.createElement("p")
-            next.className = "next"
-            next.textContent = objResults[i].next
-            container.appendChild(next)
-        }
+        container.appendChild(next)
 
         
         
