@@ -4,7 +4,7 @@ fetch('https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllData.json'
     .catch(err => console.log(err));
 
 
-const album_order = ["evermore", "folklore", "Lover", "Reputation", "1989", "Red", "Speak Now", "Fearless (Taylor's Version)", "Taylor Swift", "Unreleased", "Singing Credits Only", "Talkshow Parody", "Unspecified Album", "EP: Sounds Of The Season: The Taylor Swift Holiday Collection"]
+const album_order = ["evermore", "folklore", "Lover", "Reputation", "1989", "Red (Taylor's Version)", "Speak Now", "Fearless (Taylor's Version)", "Taylor Swift", "Unreleased", "Singing Credits Only", "Talkshow Parody", "Unspecified Album", "EP: Sounds Of The Season: The Taylor Swift Holiday Collection"]
 
 
 function hexToRgbA(hex) {
