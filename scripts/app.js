@@ -1,11 +1,12 @@
-fetch('https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllData.json')
+fetch('https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllDataOct2322.json')
     .then(response => response.json())
     .then(data => runApp(data))
     .catch(err => console.log(err));
 
 
-const album_order = ["evermore", "folklore", "Lover", "Reputation", "1989", "Red (Taylor's Version)", "Speak Now", "Fearless (Taylor's Version)", "Taylor Swift", "Unreleased", "Singing Credits Only", "Talkshow Parody", "Unspecified Album", "EP: Sounds Of The Season: The Taylor Swift Holiday Collection"]
+const album_order = ["midnights", "evermore", "folklore", "Lover", "Reputation", "1989", "Red (Taylor's Version)", "Speak Now", "Fearless (Taylor's Version)", "Taylor Swift", "Unreleased", "Singing Credits Only", "Talkshow Parody", "Unspecified Album", "EP: Sounds Of The Season: The Taylor Swift Holiday Collection"]
 
+const num_albums = 10
 
 function hexToRgbA(hex) {
     var c
@@ -54,45 +55,13 @@ function getSongShortened(title) {
 }
 
 
-function fill_filters(data) {
-    data_filters = {albums: {checked: true, children: {}}, other: {checked: true, children: {}}}
-    for (i in album_order) {
-        if (i < 9) {
-            album_name = getAlbumId(i)
-            data_filters.albums.children[album_name] = {checked: true, children: []}
-
-            songs = Object.keys(data[album_order[i]])
-
-            for (j = 0; j < songs.length; j++) {
-                data_filters.albums.children[album_name].children.push([songs[j], true])
-            }
-
-        } else {
-            other_name = getOtherId(i, data)
-            data_filters.other.children[other_name] = {checked: true, children: []}
-
-            songs = Object.keys(data[album_order[i]])
-
-            for (j = 0; j < songs.length; j++) {
-                data_filters.other.children[other_name].children.push([songs[j], true])
-            }
-
-        }
-
-    }
-
-    return data_filters
-
-}
-
-
 function fillSongFilters(data) {
     data_filters = {}
 
     for (album in data) {
         for (song in data[album]) {
             index = album_order.indexOf(album)
-            if (index < 9) {
+            if (index < num_albums) {
                 data_filters["albums-" + getAlbumId(album_order.indexOf(album)) + "-" + getSongShortened(song)] = true
             } else {
                 data_filters["other-" + getOtherId(album_order.indexOf(album), data) + "-" + getSongShortened(song)] = true

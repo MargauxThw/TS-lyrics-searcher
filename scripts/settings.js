@@ -15,7 +15,6 @@ updateBoxes = (id, data) => {
 function openSettings(data) {
     settingsPop = document.getElementById("settings-pop")
     inputs = document.getElementById("inputs")
-    testing = document.getElementById("ul-albums-evermore")
 
     if (settingsPop.style.display == "block") {
         settingsPop.style.display = "none"
@@ -53,7 +52,7 @@ function generateRows(data) { // Creates all drop down rows
         ul1.style.display = "none"
 
         // Add all album name drop downs
-        for (i = 0; i < 9; i++) { // 9 is the number of albums! Could get from context
+        for (i = 0; i < num_albums; i++) {
             album_name = getAlbumId(i)
 
             li = document.createElement("li")
@@ -123,7 +122,7 @@ function generateRows(data) { // Creates all drop down rows
         ul1.style.display = "none"
 
         // Add all other name drop downs
-        for (i = 9; i < album_order.length; i++) {
+        for (i = num_albums; i < album_order.length; i++) {
             album_name = getOtherId(i, data)
 
             li = document.createElement("li")
