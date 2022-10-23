@@ -8,8 +8,8 @@ function search(data) {
         search_input = document.getElementById('search')
 
         window.goatcounter.count({
-            path:  'search',
-            title: new_term,
+            path:  new_term,
+            title: 'search',
             event: true,
         })
     }
