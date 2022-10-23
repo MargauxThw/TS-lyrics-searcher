@@ -6,6 +6,12 @@ function search(data) {
 
         document.getElementById('search').value = null
         search_input = document.getElementById('search')
+
+        window.goatcounter.count({
+            path:  'search',
+            title: new_term,
+            event: true,
+        })
     }
 
     displayResults(data)
