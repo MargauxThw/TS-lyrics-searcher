@@ -88,21 +88,41 @@ function runApp(data) {
         
     submit.addEventListener('click', (e) => {
         search(data)
+        window.goatcounter.count({
+            path:  'Search by button',
+            title: 'action',
+            event: true,
+        })
     })
 
     search_input.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             search(data)
-
+            window.goatcounter.count({
+                path:  'Search by enter',
+                title: 'action',
+                event: true,
+            })
         }
     })
 
     settings.addEventListener('click', (e) => {
         openSettings(data)
+        window.goatcounter.count({
+            path:  'Open Settings',
+            title: 'action',
+            event: true,
+        })
     })
 
     settings_close.addEventListener('click', (e) => {
         openSettings(data)
+        window.goatcounter.count({
+            path:  'Close Settings',
+            title: 'action',
+            event: true,
+        })
+        
     })
 
 }
