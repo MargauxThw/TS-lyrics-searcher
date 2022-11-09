@@ -234,14 +234,14 @@ function checkParent(move, elem) {
 }
 
 
-function toggleSongFilters (ids, move, data) {
+function toggleSongFilters(ids, move, data) {
     ids = ids.slice(1)
     prefix = ids.join("-")
 
     for (i = 0; i < Object.keys(data_filters).length; i++) {
         id = Object.keys(data_filters)[i]
 
-        if (id.split(prefix).length == 2 && id.split(prefix)[0] === "" 
+        if (id.split(prefix).length == 2 && id.split(prefix)[0] === ""
             && (id.split(prefix)[1] === "" || id.split(prefix)[1][0] === "-")) {
 
             data_filters[Object.keys(data_filters)[i]] = move
@@ -280,15 +280,43 @@ function check(id, data) {
 
     if (id === "case-sensitive") {
         matchingCase = !matchingCase
+        if (matchingCase) {
+            window.goatcounter.count({
+                path: id,
+                title: 'action',
+                event: true,
+            })
+        }
         return
     } else if (id === "all-terms") {
         allFilters = !allFilters
+        if (allFilters) {
+            window.goatcounter.count({
+                path: id,
+                title: 'action',
+                event: true,
+            })
+        }
         return
     } else if (id === "full-words") {
         full = !full
+        if (full) {
+            window.goatcounter.count({
+                path: id,
+                title: 'action',
+                event: true,
+            })
+        }
         return
-    }  else if (id ==="hide-surr") {
+    } else if (id === "hide-surr") {
         hideSurr = !hideSurr
+        if (hideSurr) {
+            window.goatcounter.count({
+                path: id,
+                title: 'action',
+                event: true,
+            })
+        }
         return
     }
 
