@@ -125,4 +125,12 @@ function runApp(data) {
         
     })
 
+    document.getElementById("link-to-quiz").addEventListener('click', (e) => {
+        window.goatcounter.count({
+            path:  'Click link to quiz',
+            title: 'action',
+            event: true,
+        })
+    })
+
 }

@@ -233,6 +233,26 @@ ul {
   text-align: center;
 }
 
+#link-away {
+  text-align: center;
+  bottom: 0;
+  background-color: #2195f321;
+
+  margin: 28px auto 28px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  font-weight: bold;
+
+  padding: 18px;
+  border-radius: 8px;
+  border: #2196F3 solid 2px;
+}
+
+#link-away a {
+  color: #2196F3;
+}
+
 .in-card {
   margin-block-start: 0
 }
