@@ -34,16 +34,7 @@ function getOtherId(index, data) {
 
 
 function getSongShortened(title) {
-    title_ids = title.split(" ")[0].toLowerCase()
-
-    if (title_ids === "love" || title_ids === "beautiful" || title_ids === "my" 
-        || title_ids === "this" || title_ids === "what" || title_ids === "your") {
-            title_ids = [title.split(" ")[0].toLowerCase(), title.split(" ")[1].toLowerCase()].join("-")
-        }
-
-    if (title_ids === "i" || title_ids === "the" || title_ids === "a") {
-        title_ids = title.split(" ")[1].toLowerCase()
-    }
+    title_ids = title.split(" ").map(term => term.toLowerCase()).join("-")
 
     title_ids = title_ids.replace("'", "")
     title_ids = title_ids.replace("!", "")
