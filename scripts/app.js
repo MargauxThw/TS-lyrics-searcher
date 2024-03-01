@@ -124,4 +124,12 @@ function runApp(data) {
         })
     })
 
+    document.getElementById("link-to-bmc").addEventListener('click', (e) => {
+        window.goatcounter.count({
+            path:  'Click link to BMC',
+            title: 'action',
+            event: true,
+        })
+    })
+
 }
