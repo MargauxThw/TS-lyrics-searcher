@@ -159,4 +159,12 @@ function runApp(data) {
       event: true,
     });
   });
+
+  document.getElementById("link-to-survey").addEventListener("click", (e) => {
+    window.goatcounter.count({
+      path: "Click link to survey",
+      title: "action",
+      event: true,
+    });
+  });
 }
