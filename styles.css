@@ -100,6 +100,7 @@ h3 {
 [id^="ul-other"] {
 	margin-left: 33px;
 	flex-direction: column;
+	width: calc(100% - 33px);
 }
 
 #myBtn {

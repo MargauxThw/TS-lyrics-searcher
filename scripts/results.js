@@ -10,8 +10,9 @@ const debut = ["#3AA6ED", "#1B6069"]
 const midnights = ["#88ABBE", "#020F3A"]
 const other = ["#242424", "#000000", "#FFFFFF"]
 const ttpd = ["#A9A092", "#241F1C"]
+const tloasg = ["#79E5AC", "#03514D"]
 
-const colours = [ttpd, midnights, evermore, folklore, lover, reputation, nineteen, red,
+const colours = [tloasg, ttpd, midnights, evermore, folklore, lover, reputation, nineteen, red,
     speak, fearless, debut, other, other, other, other, other, other, other, other
 ]
 const symbols = [" ", ",", "'", "(", ")", ":", "?"]

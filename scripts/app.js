@@ -1,11 +1,12 @@
 fetch(
-  "https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllDataApr1924.json"
+  "https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllDataOct325.json"
 )
   .then((response) => response.json())
   .then((data) => runApp(data))
   .catch((err) => console.log(err));
 
 const album_order = [
+  "The Life of a Showgirl",
   "The Tortured Poets Department",
   "midnights",
   "evermore",
@@ -24,7 +25,7 @@ const album_order = [
   "EP: Sounds Of The Season: The Taylor Swift Holiday Collection",
 ];
 
-const num_albums = 11;
+const num_albums = 12;
 
 function hexToRgbA(hex) {
   var c;
@@ -41,7 +42,10 @@ function hexToRgbA(hex) {
 }
 
 function getAlbumId(index) {
-  return album_order[index].split(" ")[0].toLowerCase();
+  return album_order[index]
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-") // replace non-alphanumeric with hyphens
+    .replace(/(^-|-$)/g, "");    // trim leading/trailing hyphens
 }
 
 function getOtherId(index, data) {
