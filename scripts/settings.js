@@ -29,6 +29,18 @@ function openSettings(data) {
         searchOptions[i].onclick = updateOptions(searchOptions[i].id, data)
     }
 
+    // Set the group-results checkbox state from global
+    const groupResultsBox = document.getElementById("group-results");
+    if (groupResultsBox) {
+        if (groupResults) {
+            groupResultsBox.classList.add("checked");
+            groupResultsBox.innerHTML = '<i class="fa fa-check"></i>';
+        } else {
+            groupResultsBox.classList.remove("checked");
+            groupResultsBox.innerHTML = '';
+        }
+    }
+
     generateRows(data)
 }
 
@@ -317,6 +329,18 @@ function check(id, data) {
                 event: true,
             })
         }
+        return
+    } else if (id === "group-results") {
+        groupResults = !groupResults;
+        if (groupResults) {
+            window.goatcounter.count({
+                path: id,
+                title: 'action',
+                event: true,
+            });
+        }
+        // Re-render results as groups
+        displayResults(data);
         return
     }
 

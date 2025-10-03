@@ -283,6 +283,144 @@ function displayResults(data) {
     objResults = getResults(data)
     updateNum(objResults.length)
 
+    // Grouped results feature
+    if (typeof groupResults !== 'undefined' && groupResults) {
+        // Group by album, then by song
+        const grouped = {};
+        for (const r of objResults) {
+            if (!grouped[r.album]) grouped[r.album] = {};
+            if (!grouped[r.album][r.song]) grouped[r.album][r.song] = [];
+            grouped[r.album][r.song].push(r);
+        }
+        // For each album
+        Object.keys(grouped).forEach(album => {
+            const albumIndex = album_order.indexOf(album);
+            const albumResults = grouped[album];
+            const albumSongCount = Object.keys(albumResults).length;
+            let albumLineCount = 0;
+            Object.values(albumResults).forEach(lines => albumLineCount += lines.length);
+
+            // Album border color (use first gradient color)
+            const borderColor = colours[albumIndex][0];
+
+            // Album accordion
+            const albumLi = document.createElement('li');
+            albumLi.className = 'group-album';
+            albumLi.style.width = '100%';
+            // Accordion header
+            const albumHeader = document.createElement('button');
+            albumHeader.className = 'group-accordion';
+            albumHeader.innerHTML = `
+                <span class="chevron">&#8250;</span>
+                <span class="album-text">${album}</span>
+                <span class="group-accordion-meta">
+                  <span class="pill">${albumSongCount} song${albumSongCount !== 1 ? 's' : ''}</span>
+                  <span class="pill">${albumLineCount} line${albumLineCount !== 1 ? 's' : ''}</span>
+                </span>
+            `;
+            albumHeader.style.setProperty('--album-border', borderColor);
+            // ...modern styles handled by CSS...
+            const albumContent = document.createElement('ul');
+            albumContent.style.display = 'none';
+            albumContent.style.flexDirection = 'column';
+            albumContent.style.width = '100%';
+            albumContent.style.background = 'none'; // Remove background color
+            albumContent.style.padding = '0 0 0 0';
+            albumContent.style.margin = '0';
+            // Toggle
+            albumHeader.addEventListener('click', () => {
+                const open = albumContent.style.display === 'flex';
+                albumContent.style.display = open ? 'none' : 'flex';
+                albumHeader.classList.toggle('open', !open);
+            });
+            // For each song in album
+            Object.keys(albumResults).forEach(song => {
+                const songResults = albumResults[song];
+                // Song accordion
+                const songLi = document.createElement('li');
+                songLi.className = 'group-song';
+                songLi.style.width = '100%';
+                // Song header
+                const songHeader = document.createElement('button');
+                songHeader.className = 'group-accordion-secondary';
+                // Get the dark shade for the album
+                const chevronColor = colours[albumIndex][1];
+                songHeader.innerHTML = `
+                  <span class="chevron chevron-song" style="color: ${chevronColor}">&#8250;</span>
+                  <p class="song-accordion-title">${song}</p>
+                  <span class="group-accordion-secondary-meta">
+                    <span class="pill">${songResults.length} line${songResults.length !== 1 ? 's' : ''}</span>
+                  </span>
+                `;
+                // ...modern styles handled by CSS...
+                const songContent = document.createElement('ul');
+                songContent.style.display = 'none';
+                songContent.style.flexDirection = 'column';
+                songContent.style.width = '100%';
+                songContent.style.background = '#fff';
+                songContent.style.padding = '0 0 0 0';
+                songContent.style.margin = '0';
+                // Toggle
+                songHeader.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const open = songContent.style.display === 'flex';
+                    songContent.style.display = open ? 'none' : 'flex';
+                    songHeader.classList.toggle('open', !open);
+                });
+                // Render lyric cards as normal
+                for (const obj of songResults) {
+                    const result = document.createElement('li');
+                    result.className = 'result';
+                    result.style.background = `linear-gradient(${colours[albumIndex][0]}, ${colours[albumIndex][1]})`;
+                    result.style.boxShadow = `0px 6px 10px ${hexToRgbA(colours[albumIndex][1])}`;
+                    result.style.margin = '8px 0';
+                    const container = document.createElement('div');
+                    container.className = 'result-container';
+                    result.appendChild(container);
+                    const rtop = document.createElement('ul');
+                    rtop.className = 'results-top';
+                    // Only show section/line info
+                    const songSection = document.createElement('li');
+                    songSection.className = 'song-section grouped';
+                    songSection.innerHTML = `<b>Line ${obj.num}</b> ${obj.section}`;
+                    rtop.appendChild(songSection);
+                    container.appendChild(rtop);
+                    const hr = document.createElement('hr');
+                    hr.className = 'results-sep';
+                    hr.style.background = colours[albumIndex][2] || colours[albumIndex][0];
+                    container.appendChild(hr);
+                    if (!hideSurr) {
+                        const prev = document.createElement('p');
+                        prev.className = 'prev';
+                        prev.textContent = obj.prev;
+                        const next = document.createElement('p');
+                        next.className = 'next';
+                        next.textContent = obj.next;
+                        container.appendChild(prev);
+                        const lyric = document.createElement('p');
+                        lyric.className = 'lyrics';
+                        lyric.innerHTML = processText(obj.this);
+                        container.appendChild(lyric);
+                        container.appendChild(next);
+                    } else {
+                        const lyric = document.createElement('p');
+                        lyric.className = 'lyrics';
+                        lyric.innerHTML = processText(obj.this);
+                        lyric.style.padding = '8px 0 16px 0';
+                        container.appendChild(lyric);
+                    }
+                    songContent.appendChild(result);
+                }
+                songLi.appendChild(songHeader);
+                songLi.appendChild(songContent);
+                albumContent.appendChild(songLi);
+            });
+            albumLi.appendChild(albumHeader);
+            albumLi.appendChild(albumContent);
+            results.appendChild(albumLi);
+        });
+        return;
+    }
     for (i in objResults) {
         result = document.createElement("li")
         result.className = "result"

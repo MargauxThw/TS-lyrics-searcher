@@ -266,7 +266,7 @@ ul {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #link-quiz {
@@ -288,7 +288,6 @@ ul {
 
 #link-quiz a {
 	color: white;
-	font-weight: bold;
 	background-color: #2196f3;
 	border-radius: 4px;
 	padding: 6px 12px;
@@ -322,6 +321,10 @@ ul {
 	font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol";
 	font-size: 0.875em;
+}
+
+.song-section.grouped {
+	padding-top: 8px;
 }
 
 .result {
@@ -411,4 +414,194 @@ ul {
 
 .close:after {
 	transform: rotate(-45deg);
+}
+
+/* Modern group accordions for grouped results */
+.group-album {
+	min-width: 340px;
+	max-width: 600px;
+	margin: 0 auto 0 auto;
+	list-style: none;
+}
+@media (max-width: 800px) {
+	.group-album {
+		width: 100%;
+		min-width: 0;
+		max-width: 100%;
+		margin: 0;
+	}
+	.group-accordion {
+		justify-content: flex-start;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	.group-accordion .album-text {
+		text-align: left;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	.group-accordion-meta {
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		gap: 8px;
+		padding-left: 8px;
+		justify-content: flex-end;
+	}
+}
+.group-accordion {
+	width: 100%;
+	background: none;
+	color: #222;
+	border: none;
+	border-bottom: 2px solid var(--album-border, #e0e0e0);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 600;
+	padding: 16px 0 12px 0;
+	cursor: pointer;
+	margin-bottom: 0;
+	border-radius: 0;
+	font-size: 1.18em;
+	transition: background 0.15s;
+	position: relative;
+}
+/* Remove hover/focus effects on group accordions */
+.group-accordion:hover,
+.group-accordion:focus,
+.group-accordion-secondary:hover,
+.group-accordion-secondary:focus {
+	background: none;
+	outline: none;
+}
+.group-accordion .chevron,
+.group-accordion-secondary .chevron {
+	order: 0;
+	margin-left: 0;
+	margin-right: 16px;
+	padding-left: 0;
+	/* Add left padding for spacing */
+	font-size: 1.2em;
+	transition: transform 0.2s, color 0.2s;
+	display: inline-block;
+	transform: rotate(-90deg);
+	color: var(--album-border, #e0e0e0);
+}
+.group-accordion.open .chevron,
+.group-accordion-secondary.open .chevron {
+	transform: rotate(90deg);
+}
+.group-accordion .album-text {
+	order: 1;
+	text-align: left;
+	flex: 1 1 auto;
+	min-width: 0;
+	display: initial;
+	align-items: initial;
+}
+.group-accordion-meta {
+	order: 2;
+	margin-left: auto;
+	justify-content: flex-end;
+	gap: 8px;
+	font-size: 0.85em;
+	color: #888;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.group-accordion-meta .pill,
+.group-accordion-secondary-meta .pill {
+	display: inline-block;
+	/* background: rgba(255,255,255,0.75); */
+	color: #444;
+	border-radius: 12px;
+	padding: 2px 10px 2px 10px;
+	font-size: 0.78em;
+	font-weight: 600;
+	min-width: 38px;
+	text-align: center;
+	border: 1px solid #e0e0e0;
+	font-family: "Poppins", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+	margin: 0;
+	white-space: nowrap;
+}
+
+.group-accordion-secondary-meta .pill {
+	font-weight: 500;
+}
+
+.group-song {
+	width: 100%;
+	margin-bottom: 0;
+	list-style: none;
+}
+.group-accordion-secondary {
+	width: 100%;
+	background: none !important;
+	color: #333;
+	border: none;
+	border-bottom: 1px solid #ededed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+	padding: 10px 24px 8px 24px;
+	cursor: pointer;
+	margin-bottom: 0;
+	border-radius: 0;
+	font-size: 1em;
+	position: relative;
+}
+.group-accordion-secondary .chevron {
+	margin-left: 0;
+	margin-right: 12px;
+	font-size: 1.1em;
+	transition: transform 0.2s, color 0.2s;
+	display: inline-block;
+	transform: rotate(-90deg);
+	color: #ededed;
+}
+.group-accordion-secondary.open .chevron {
+	transform: rotate(90deg);
+}
+.group-accordion .album-text {
+	font-family: "Poppins", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 0.75em;
+	font-weight: bold;
+	letter-spacing: 0.01em;
+	padding: 0;
+	text-transform: uppercase;
+}
+.group-accordion-secondary-meta {
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	gap: 8px;
+	margin-left: auto;
+	justify-content: flex-end;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.song-accordion-title {
+	font-family: Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol";
+	font-size: 0.875em;
+	font-weight: 500;
+	color: #333;
+	letter-spacing: 0.01em;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	display: inline-block;
+}
+
+.group-accordion-secondary.open .song-accordion-title, .group-accordion-secondary.open .pill {
+	opacity: 0.9;
+	transform: scale(0.98);
 }
