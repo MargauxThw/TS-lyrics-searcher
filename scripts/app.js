@@ -1,5 +1,5 @@
 fetch(
-  "https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllDataOct325.json"
+  "https://raw.githubusercontent.com/MargauxThw/TS-lyrics/main/AllDataJun526.json"
 )
   .then((response) => response.json())
   .then((data) => runApp(data))
